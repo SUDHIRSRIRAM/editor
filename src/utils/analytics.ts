@@ -5,12 +5,11 @@ const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // Replace with your actual GA4 measur
 export const initGA = () => {
   try {
     ReactGA.initialize(GA_MEASUREMENT_ID, {
-      testMode: process.env.NODE_ENV !== 'production',
+      testMode: false,
       gaOptions: {
-        debug_mode: process.env.NODE_ENV !== 'production'
+        debug_mode: false
       }
     });
-    console.log('Google Analytics initialized successfully');
   } catch (error) {
     console.error('Failed to initialize Google Analytics:', error);
   }
@@ -23,7 +22,6 @@ export const trackPageView = (path: string) => {
       page: path,
       title: document.title
     });
-    console.log('Page view tracked:', path);
   } catch (error) {
     console.error('Failed to track page view:', error);
   }
@@ -44,7 +42,6 @@ export const trackEvent = (
       value,
       nonInteraction
     });
-    console.log('Event tracked:', { category, action, label, value });
   } catch (error) {
     console.error('Failed to track event:', error);
   }
